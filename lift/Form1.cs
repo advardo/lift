@@ -53,7 +53,7 @@ namespace lift
         private void timer1_Tick(object sender, EventArgs e)
         {
 
-            // Console.WriteLine("aa : ", Convert.ToString(timer1.Tick));
+
             timer1.Interval = 10;
 
             if (pictureBox2.Location.Y != 412 - floorsize * nfloor)
@@ -65,14 +65,7 @@ namespace lift
             else
             {
                 liftnow = 412 - floorsize * nfloor;
-                // label1.Text = timer1_Tick.;
-                //timer1.Tick -= timer1_Tick;
                 timer1.Stop();
-
-
-
-
-
             }
         }
 
@@ -92,16 +85,11 @@ namespace lift
             timer1.Tick -= timer1_Tick;
             nfloor = 1;
             System.Drawing.Graphics person = this.CreateGraphics();
-            Image per = Image.FromFile(@"C:\Users\advar\Desktop\per.png");
+            Image per = Image.FromFile(@"img\per.png");
             person.DrawImage(per, xofperson, yofperson + floorsize * (20 - nfloor), 20, 20);
-
             timer1.Tick += timer1_Tick;
             timer1.Start();
             radioButton1.Visible = false;
-
-
-
-
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
@@ -109,7 +97,7 @@ namespace lift
             timer1.Tick -= timer1_Tick;
             nfloor = 2;
             System.Drawing.Graphics person = this.CreateGraphics();
-            Image per = Image.FromFile(@"C:\Users\advar\Desktop\per.png");
+            Image per = Image.FromFile(@"img\per.png");
             person.DrawImage(per, xofperson, yofperson + floorsize * (20 - nfloor), 20, 20);
 
             timer1.Tick += timer1_Tick;
@@ -123,7 +111,7 @@ namespace lift
             timer1.Tick -= timer1_Tick;
             nfloor = 3;
             System.Drawing.Graphics person = this.CreateGraphics();
-            Image per = Image.FromFile(@"C:\Users\advar\Desktop\per.png");
+            Image per = Image.FromFile(@"img\per.png");
             person.DrawImage(per, xofperson, yofperson + floorsize * (20 - nfloor), 20, 20);
 
             timer1.Tick += timer1_Tick;
@@ -136,7 +124,7 @@ namespace lift
             timer1.Tick -= timer1_Tick;
             nfloor = 4;
             System.Drawing.Graphics person = this.CreateGraphics();
-            Image per = Image.FromFile(@"C:\Users\advar\Desktop\per.png");
+            Image per = Image.FromFile(@"img\per.png");
             person.DrawImage(per, xofperson, yofperson + floorsize * (20 - nfloor), 20, 20);
 
             timer1.Tick += timer1_Tick;
@@ -149,7 +137,7 @@ namespace lift
             timer1.Tick -= timer1_Tick;
             nfloor = 5;
             System.Drawing.Graphics person = this.CreateGraphics();
-            Image per = Image.FromFile(@"C:\Users\advar\Desktop\per.png");
+            Image per = Image.FromFile(@"img\per.png");
             person.DrawImage(per, xofperson, yofperson + floorsize * (20 - nfloor), 20, 20);
 
             timer1.Tick += timer1_Tick;
@@ -162,7 +150,7 @@ namespace lift
             timer1.Tick -= timer1_Tick;
             nfloor = 6;
             System.Drawing.Graphics person = this.CreateGraphics();
-            Image per = Image.FromFile(@"C:\Users\advar\Desktop\per.png");
+            Image per = Image.FromFile(@"img\per.png");
             person.DrawImage(per, xofperson, yofperson + floorsize * (20 - nfloor), 20, 20);
 
             timer1.Tick += timer1_Tick;
@@ -175,7 +163,7 @@ namespace lift
             timer1.Tick -= timer1_Tick;
             nfloor = 7;
             System.Drawing.Graphics person = this.CreateGraphics();
-            Image per = Image.FromFile(@"C:\Users\advar\Desktop\per.png");
+            Image per = Image.FromFile(@"img\per.png");
             person.DrawImage(per, xofperson, yofperson + floorsize * (20 - nfloor), 20, 20);
 
             timer1.Tick += timer1_Tick;
@@ -185,9 +173,10 @@ namespace lift
 
         private void radioButton8_CheckedChanged(object sender, EventArgs e)
         {
+            timer1.Tick -= timer1_Tick;
             nfloor = 8;
             System.Drawing.Graphics person = this.CreateGraphics();
-            Image per = Image.FromFile(@"C:\Users\advar\Desktop\per.png");
+            Image per = Image.FromFile(@"img\per.png");
             person.DrawImage(per, xofperson, yofperson + floorsize * (20 - nfloor), 20, 20);
 
             timer1.Tick += timer1_Tick;
@@ -200,7 +189,7 @@ namespace lift
             timer1.Tick -= timer1_Tick;
             nfloor = 9;
             System.Drawing.Graphics person = this.CreateGraphics();
-            Image per = Image.FromFile(@"C:\Users\advar\Desktop\per.png");
+            Image per = Image.FromFile(@"img\per.png");
             person.DrawImage(per, xofperson, yofperson + floorsize * (20 - nfloor), 20, 20);
 
             timer1.Tick += timer1_Tick;
@@ -213,7 +202,7 @@ namespace lift
             timer1.Tick -= timer1_Tick;
             nfloor = 10;
             System.Drawing.Graphics person = this.CreateGraphics();
-            Image per = Image.FromFile(@"C:\Users\advar\Desktop\per.png");
+            Image per = Image.FromFile(@"img\per.png");
             person.DrawImage(per, xofperson, yofperson + floorsize * (20 - nfloor), 20, 20);
 
             timer1.Tick += timer1_Tick;
