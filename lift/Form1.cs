@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace lift
 {
@@ -15,12 +16,12 @@ namespace lift
         int speed = 1;
         int floorsize = 20;
         Random rf = new Random();
-        int xofperson = 25;
-        int yofperson = 12;
         int nfloor = 0;
         int liftnow;
+        bool edem;
 
 
+        
         public Form1()
         {
             InitializeComponent();
@@ -35,17 +36,17 @@ namespace lift
         private void pictureBox2_Click(object sender, EventArgs e)
         {
 
+           
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
             Pen p = new Pen(Color.Black, 2);
             System.Drawing.Graphics line = this.CreateGraphics();
             for (int i = 0; i <= 20; i++)
             {
                 line.DrawLine(p, 28, 12 + i * 20, 54, 12 + i * 20);
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
 
 
 
@@ -66,9 +67,41 @@ namespace lift
             {
                 liftnow = 412 - floorsize * nfloor;
                 timer1.Stop();
+                Thread.Sleep(2000);
+
+                
+
+                Form2 f = new Form2();
+                f.ShowDialog();
+                edem = f.go;
+                nfloor = Convert.ToInt16(f.label1.Text);
+                if (edem) {
+                    timer2.Tick -= timer2_Tick;
+                    timer2.Tick += timer2_Tick;
+                    timer2.Start();
+                    edem = false;
+                }
             }
         }
 
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            timer2.Interval = 10;
+
+            if (pictureBox2.Location.Y != 412 - floorsize * nfloor)
+            {
+                if (liftnow < 412 - floorsize * nfloor)
+                    pictureBox2.Top += speed;
+                else pictureBox2.Top -= speed;
+            }
+            else
+            {
+                liftnow = 412 - floorsize * nfloor;
+                timer2.Stop();
+                Thread.Sleep(2000);
+
+            }
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -80,134 +113,117 @@ namespace lift
         //                        RADIO ----BUTTONS
         //______________________--------------------------_______________________________________________
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        //private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    timer1.Tick -= timer1_Tick;
+        //    nfloor = 1;
+        //    System.Drawing.Graphics person = this.CreateGraphics();
+        //    Image per = Image.FromFile(@"../../Resources/per.png");
+        //    person.DrawImage(per, xofperson, yofperson + floorsize * (20 - nfloor), 20, 20);
+        //    timer1.Tick += timer1_Tick;
+        //    timer1.Start();
+        //    radioButton1.Visible = false;
+        //}
+
+
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
             timer1.Tick -= timer1_Tick;
             nfloor = 1;
-            System.Drawing.Graphics person = this.CreateGraphics();
-            Image per = Image.FromFile(@"img\per.png");
-            person.DrawImage(per, xofperson, yofperson + floorsize * (20 - nfloor), 20, 20);
+            pictureBox1.Image = lift.Properties.Resources.per;
             timer1.Tick += timer1_Tick;
             timer1.Start();
-            radioButton1.Visible = false;
+           
         }
 
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        private void pictureBox3_Click(object sender, EventArgs e)
         {
             timer1.Tick -= timer1_Tick;
             nfloor = 2;
-            System.Drawing.Graphics person = this.CreateGraphics();
-            Image per = Image.FromFile(@"img\per.png");
-            person.DrawImage(per, xofperson, yofperson + floorsize * (20 - nfloor), 20, 20);
-
+            pictureBox3.Image = lift.Properties.Resources.per;
             timer1.Tick += timer1_Tick;
             timer1.Start();
-            radioButton2.Visible = false;
 
         }
 
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        private void pictureBox4_Click(object sender, EventArgs e)
         {
             timer1.Tick -= timer1_Tick;
             nfloor = 3;
-            System.Drawing.Graphics person = this.CreateGraphics();
-            Image per = Image.FromFile(@"img\per.png");
-            person.DrawImage(per, xofperson, yofperson + floorsize * (20 - nfloor), 20, 20);
-
+            pictureBox4.Image = lift.Properties.Resources.per;
             timer1.Tick += timer1_Tick;
             timer1.Start();
-            radioButton3.Visible = false;
+
         }
 
-        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        private void pictureBox5_Click(object sender, EventArgs e)
         {
             timer1.Tick -= timer1_Tick;
             nfloor = 4;
-            System.Drawing.Graphics person = this.CreateGraphics();
-            Image per = Image.FromFile(@"img\per.png");
-            person.DrawImage(per, xofperson, yofperson + floorsize * (20 - nfloor), 20, 20);
-
+            pictureBox5.Image = lift.Properties.Resources.per;
             timer1.Tick += timer1_Tick;
             timer1.Start();
-            radioButton4.Visible = false;
+
         }
 
-        private void radioButton5_CheckedChanged(object sender, EventArgs e)
+        private void pictureBox6_Click(object sender, EventArgs e)
         {
             timer1.Tick -= timer1_Tick;
             nfloor = 5;
-            System.Drawing.Graphics person = this.CreateGraphics();
-            Image per = Image.FromFile(@"img\per.png");
-            person.DrawImage(per, xofperson, yofperson + floorsize * (20 - nfloor), 20, 20);
-
+            pictureBox6.Image = lift.Properties.Resources.per;
             timer1.Tick += timer1_Tick;
             timer1.Start();
-            radioButton5.Visible = false;
+
         }
 
-        private void radioButton6_CheckedChanged(object sender, EventArgs e)
+        private void pictureBox7_Click(object sender, EventArgs e)
         {
             timer1.Tick -= timer1_Tick;
             nfloor = 6;
-            System.Drawing.Graphics person = this.CreateGraphics();
-            Image per = Image.FromFile(@"img\per.png");
-            person.DrawImage(per, xofperson, yofperson + floorsize * (20 - nfloor), 20, 20);
-
+            pictureBox7.Image = lift.Properties.Resources.per;
             timer1.Tick += timer1_Tick;
             timer1.Start();
-            radioButton6.Visible = false;
+
         }
 
-        private void radioButton7_CheckedChanged(object sender, EventArgs e)
+        private void pictureBox8_Click(object sender, EventArgs e)
         {
             timer1.Tick -= timer1_Tick;
             nfloor = 7;
-            System.Drawing.Graphics person = this.CreateGraphics();
-            Image per = Image.FromFile(@"img\per.png");
-            person.DrawImage(per, xofperson, yofperson + floorsize * (20 - nfloor), 20, 20);
-
+            pictureBox8.Image = lift.Properties.Resources.per;
             timer1.Tick += timer1_Tick;
             timer1.Start();
-            radioButton7.Visible = false;
+
         }
 
-        private void radioButton8_CheckedChanged(object sender, EventArgs e)
+        private void pictureBox9_Click(object sender, EventArgs e)
         {
             timer1.Tick -= timer1_Tick;
             nfloor = 8;
-            System.Drawing.Graphics person = this.CreateGraphics();
-            Image per = Image.FromFile(@"img\per.png");
-            person.DrawImage(per, xofperson, yofperson + floorsize * (20 - nfloor), 20, 20);
-
+            pictureBox9.Image = lift.Properties.Resources.per;
             timer1.Tick += timer1_Tick;
             timer1.Start();
-            radioButton8.Visible = false;
+
         }
 
-        private void radioButton9_CheckedChanged(object sender, EventArgs e)
+        private void pictureBox10_Click(object sender, EventArgs e)
         {
             timer1.Tick -= timer1_Tick;
             nfloor = 9;
-            System.Drawing.Graphics person = this.CreateGraphics();
-            Image per = Image.FromFile(@"img\per.png");
-            person.DrawImage(per, xofperson, yofperson + floorsize * (20 - nfloor), 20, 20);
-
+            pictureBox10.Image = lift.Properties.Resources.per;
             timer1.Tick += timer1_Tick;
             timer1.Start();
-            radioButton9.Visible = false;
+
         }
 
-        private void radioButton10_CheckedChanged(object sender, EventArgs e)
+        private void pictureBox11_Click(object sender, EventArgs e)
         {
             timer1.Tick -= timer1_Tick;
             nfloor = 10;
-            System.Drawing.Graphics person = this.CreateGraphics();
-            Image per = Image.FromFile(@"img\per.png");
-            person.DrawImage(per, xofperson, yofperson + floorsize * (20 - nfloor), 20, 20);
-
+            pictureBox11.Image = lift.Properties.Resources.per;
             timer1.Tick += timer1_Tick;
             timer1.Start();
-            radioButton10.Visible = false;
+
         }
     }
 }
